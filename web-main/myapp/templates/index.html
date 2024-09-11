@@ -1,0 +1,106 @@
+{% extends "_base.html" %}
+{% block title %} Home {% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="container mx-auto p-8 bg-gray-50 shadow-lg rounded-lg">
+
+	<h2 id='head' class="text-4xl text-center text-blue-700 font-extrabold mb-6">สวัสดีครับชาวโลก</h2>
+	
+	<div class="text-center mb-6">
+	  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105" onclick="document.getElementById('head').style.color='Red'">
+		เปลี่ยนสี
+	  </button>
+	</div>
+
+	<div class="border-t-2 border-gray-300 mb-6"></div>
+
+	<div id="currentDateTime" class="text-4xl text-center text-gray-700 font-mono mb-6">
+	  <script>UpdateTime();</script>
+	</div>
+
+	<div class="border-t-2 border-gray-300 mb-6"></div>
+
+	<div class="text-center mb-6">
+	  <button class="bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105" 
+			  onclick="document.getElementById('IMG').src='{% static 'img/Idle.png' %}'">เเมวยืน</button>
+  
+	  <img id="IMG" src="{% static 'img/Idle.png' %}" width="200px" alt="Idle cat" class="mx-auto mt-6 mb-6">
+  
+	  <button class="bg-transparent hover:bg-blue-500 text-blue-700 hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105" 
+			  onclick="document.getElementById('IMG').src='{% static 'img/Slide.png' %}'">เเมวสไลด์</button>
+	</div>
+
+	<div class="border-t-2 border-gray-300 mb-6"></div>
+
+	<div class="mb-4">
+		<div class="flex justify-center gap-4 mb-4">
+			<button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+			hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent
+			rounded transition duration-300 ease-in-out transform hover:scale-105" onclick="displayTable('visible')">แสดงตาราง</button>
+			<button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+			hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent
+			rounded transition duration-300 ease-in-out transform hover:scale-105" onclick="displayTable('hidden')">ซ่อนตาราง</button>
+		</div>
+
+		<table id="myTable" class="border-collapse border border-slate-500 text-center mx-auto" style="display: none;">
+			<caption class="text-xl font-bold mb-4">ตารางสินค้า</caption>
+			<thead class="bg-blue-500 text-white">
+				<tr class="border border-slate-500">
+					<th class="py-2 px-4">รายการที่ 1</th>
+					<th class="py-2 px-4">รายการที่ 2</th>
+					<th class="py-2 px-4">รายการที่ 3</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="bg-gray-100 hover:bg-gray-200">
+					<td class="border border-slate-500 py-2 px-4">324</td>
+					<td class="border border-slate-500 py-2 px-4">657</td>
+					<td class="border border-slate-500 py-2 px-4">318</td>
+				</tr>
+				<tr class="bg-white hover:bg-gray-200">
+					<td class="border border-slate-500 py-2 px-4">999</td>
+					<td class="border border-slate-500 py-2 px-4">777</td>
+					<td class="border border-slate-500 py-2 px-4">888</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="border-t-2 border-gray-300 mt-6 mb-6"></div>
+	</div>
+
+	<div class="mb-4">
+		<label class="block mb-2 text-lg font-semibold">กรุณากรอกตัวเลข:</label>
+		<div class="mb-2">
+			<label for="num1" class="block mb-1">number #1</label>
+			<input type="number" id="num1" class="border border-gray-300 rounded-md px-3 py-2 w-full" />
+		</div>
+		<div class="mb-2">
+			<label for="num2" class="block mb-1">number #2</label>
+			<input type="number" id="num2" class="border border-gray-300 rounded-md px-3 py-2 w-full" />
+		</div>
+		<div class="mb-4">
+			<label for="num3" class="block mb-1">number #3</label>
+			<input type="number" id="num3" class="border border-gray-300 rounded-md px-3 py-2 w-full" />
+		</div>
+		<button class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out' onclick='calAverage()'>Submit</button>
+	</div>
+
+	<div class='text-2xl mt-4 text-center' id='result'></div>
+
+</div>
+
+
+
+
+<script>
+function displayTable(action) {
+    var table = document.getElementById('myTable');
+    if (action === 'visible') {
+        table.style.display = 'table';
+    } else if (action === 'hidden') {
+        table.style.display = 'none';
+    }
+}
+</script>
+
+{% endblock content %}
